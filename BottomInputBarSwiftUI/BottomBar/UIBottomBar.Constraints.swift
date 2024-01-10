@@ -39,8 +39,6 @@ struct SuperViewConstraints : Constraints {
             backdrop.leadingAnchor.constraint(equalTo: target.leadingAnchor),
             backdrop.trailingAnchor.constraint(equalTo: target.trailingAnchor),
         ]
-         backdrop.setContentHuggingPriority(.required, for: .vertical)
-         target.setContentHuggingPriority(.required, for: .vertical)
 
          self.source = source
          self.target = target
