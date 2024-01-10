@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func bottomBar<Content: View>(@ViewBuilder content: @escaping () -> Content) -> some View {
+    func bottomBar<Content: View>(@ViewBuilder content: () -> Content) -> some View {
         modifier(BottomBar.Modifier(barContent: content))
     }
 }
@@ -25,7 +25,7 @@ struct BottomBar {
     struct Modifier<BarContent : View>: ViewModifier {
         
         @ViewBuilder
-        let barContent: () -> BarContent
+        let barContent: BarContent
         
         @State
         private var publisher = BottomBar.Publisher()
@@ -35,7 +35,7 @@ struct BottomBar {
                 .safeAreaPadding(.bottom, publisher.height)
                 .introspect(.viewController, on: .iOS(.v17)) {
                     guard publisher.uiBottomBar == nil else { return }
-                    let uiBottomBar = UIBottomBar(content: _UIHostingView(rootView: barContent().readSize { publisher.height = $0.height }))
+                    let uiBottomBar = UIBottomBar(content: _UIHostingView(rootView: barContent.readSize { publisher.height = $0.height }))
                     $0.view.addSubview(uiBottomBar)
                     publisher.uiBottomBar = uiBottomBar
                 }

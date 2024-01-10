@@ -45,30 +45,16 @@ struct SuperViewConstraints : Constraints {
          self.constraints = constraints
      }
      
-     func install() {
-         //superView.backgroundColor = .green
-         target.layer.borderColor = UIColor.green.cgColor
-         target.layer.borderWidth = 1
-         target.isUserInteractionEnabled = true
-         target.translatesAutoresizingMaskIntoConstraints = false
-         
-         target.addSubview(source.backdrop)
-         target.addSubview(source.guideView)
-         target.addSubview(source.hostingView)
-         
+     func install() {         
          NSLayoutConstraint.activate(constraints)
      }
      
      func uninstall() {
          NSLayoutConstraint.deactivate(constraints)
-         
-         source.backdrop.removeFromSuperview()
-         source.guideView.removeFromSuperview()
-         source.hostingView.removeFromSuperview()
      }
  }
 
-struct RootViewConstraints : Constraints {
+struct KeyboardConstraints : Constraints {
      
     private let source: UIBottomBar.Views
     private let target: UIView
@@ -114,5 +100,3 @@ struct RootViewConstraints : Constraints {
         target.keyboardLayoutGuide.keyboardDismissPadding = source.hostingView.intrinsicContentSize.height
     }
  }
-
- 

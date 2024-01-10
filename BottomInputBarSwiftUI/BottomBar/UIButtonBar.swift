@@ -7,31 +7,37 @@
 
 import UIKit
 
-@dynamicMemberLookup
 class UIBottomBar : UIView {
-    init(content: UIView) {
-        views = Views(content: content)
-        super.init(frame: .zero)
-        superViewConstraints = SuperViewConstraints(source: views, target: self)
-        superViewConstraints?.install() // need, since init will not call didSet
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didMoveToWindow() {
-        super.didMoveToWindow()
-        targetViewConstraints = RootViewConstraints(source: views, target: window?.rootViewController?.view)
+    init(content: UIView) {
+        views = Views(content: content)
+        super.init(frame: .zero)
+        
+        //backgroundColor = .green
+        layer.borderColor = UIColor.green.cgColor
+        layer.borderWidth = 1
+        isUserInteractionEnabled = true
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(views.backdrop)
+        addSubview(views.guideView)
+        addSubview(views.hostingView)
     }
     
-    override func updateConstraints() {
-        super.updateConstraints()
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        superViewConstraints = SuperViewConstraints(source: views, target: self)
+        keyboardConstraints = KeyboardConstraints(source: views, target: superview)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        targetViewConstraints?.updateKeyboardDismissPadding()
+        keyboardConstraints?.updateKeyboardDismissPadding()
     }
     
     // views, constraints
@@ -41,10 +47,10 @@ class UIBottomBar : UIView {
         views[keyPath: keyPath]
     }
     
-    var targetViewConstraints: RootViewConstraints? {
+    var keyboardConstraints: KeyboardConstraints? {
         didSet {
             oldValue?.uninstall()
-            targetViewConstraints?.install()
+            keyboardConstraints?.install()
         }
     }
     var superViewConstraints: SuperViewConstraints? {
