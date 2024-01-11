@@ -20,13 +20,13 @@ struct MessageList: View {
                     Text("\($0)")
                 }
             }
+            .onAppear {
+                proxy.scrollTo(data.last, anchor: .bottom)
+            }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.keyboardDidShowNotification)) { _ in
                 withAnimation {
                     proxy.scrollTo(data.last, anchor: .bottom)
                 }
-            }
-            .onAppear {
-                proxy.scrollTo(data.last, anchor: .bottom)
             }
         }
         .scrollDismissesKeyboard(.interactively)

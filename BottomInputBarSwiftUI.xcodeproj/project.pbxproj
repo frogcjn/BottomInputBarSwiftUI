@@ -12,7 +12,7 @@
 		6D3F87092B4E379C00A72EC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3F87082B4E379C00A72EC1 /* Preview Assets.xcassets */; };
 		6D3F87132B4E512A00A72EC1 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 6D3F87122B4E512A00A72EC1 /* SwiftUIIntrospect */; };
 		6D3F87152B4EBF8600A72EC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87142B4EBF8600A72EC1 /* ContentView.swift */; };
-		6D3F87182B4EEBC200A72EC1 /* UIButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87172B4EEBC200A72EC1 /* UIButtonBar.swift */; };
+		6D3F87182B4EEBC200A72EC1 /* UIBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87172B4EEBC200A72EC1 /* UIBottomBar.swift */; };
 		6D3F871A2B4EEBF500A72EC1 /* UIBottomBar.Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87192B4EEBF500A72EC1 /* UIBottomBar.Views.swift */; };
 		6D3F871C2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */; };
 		6D3F87242B4EF74600A72EC1 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87232B4EF74600A72EC1 /* MessageList.swift */; };
@@ -26,7 +26,7 @@
 		6D3F87052B4E379C00A72EC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D3F87082B4E379C00A72EC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6D3F87142B4EBF8600A72EC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6D3F87172B4EEBC200A72EC1 /* UIButtonBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonBar.swift; sourceTree = "<group>"; };
+		6D3F87172B4EEBC200A72EC1 /* UIBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBottomBar.swift; sourceTree = "<group>"; };
 		6D3F87192B4EEBF500A72EC1 /* UIBottomBar.Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBottomBar.Views.swift; sourceTree = "<group>"; };
 		6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBottomBar.Constraints.swift; sourceTree = "<group>"; };
 		6D3F87232B4EF74600A72EC1 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				6DE5771B2B4F5BE700196A84 /* BottomBar.swift */,
-				6D3F87172B4EEBC200A72EC1 /* UIButtonBar.swift */,
+				6D3F87172B4EEBC200A72EC1 /* UIBottomBar.swift */,
 				6D3F87192B4EEBF500A72EC1 /* UIBottomBar.Views.swift */,
 				6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */,
 			);
@@ -198,7 +198,7 @@
 				6D3F87292B4EF80300A72EC1 /* TextField.swift in Sources */,
 				6DE5771C2B4F5BE700196A84 /* BottomBar.swift in Sources */,
 				6D3F871C2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift in Sources */,
-				6D3F87182B4EEBC200A72EC1 /* UIButtonBar.swift in Sources */,
+				6D3F87182B4EEBC200A72EC1 /* UIBottomBar.swift in Sources */,
 				6D3F87242B4EF74600A72EC1 /* MessageList.swift in Sources */,
 				6D3F87152B4EBF8600A72EC1 /* ContentView.swift in Sources */,
 				6D3F87022B4E379B00A72EC1 /* BottomInputBarSwiftUIApp.swift in Sources */,
