@@ -8,34 +8,34 @@
 import SwiftUI
 
 struct MessageList: View {
+    
+    let data = Array(1..<20)
         
     var body: some View {
         ScrollViewReader { proxy in
             List {
                 TextField("123", text: .constant("123"))
                     .textFieldStyle(.roundedBorder)
-                ForEach(Array(1..<20), id: \.self) {
+                ForEach(data, id: \.self) {
                     Text("\($0)")
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.keyboardDidShowNotification)) { _ in
                 withAnimation {
-                    proxy.scrollTo(19, anchor: .bottom)
+                    proxy.scrollTo(data.last, anchor: .bottom)
                 }
             }
             .onAppear {
-                proxy.scrollTo(19, anchor: .bottom)
+                proxy.scrollTo(data.last, anchor: .bottom)
             }
-            .scrollDismissesKeyboard(.interactively)
-            .safeAreaInset(edge: .bottom) {
-                BottomBar {
-                    TextField("123", text: .constant("123"))
-                        .textFieldStyle(.roundedBorder)
-                        .padding()
-                }.border(.red.opacity(0.5))
+        }
+        .scrollDismissesKeyboard(.interactively)
+        .safeAreaInset(edge: .bottom) {
+            BottomBar {
+                TextField("123", text: .constant("123"))
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
             }
-            .navigationTitle("Message List")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

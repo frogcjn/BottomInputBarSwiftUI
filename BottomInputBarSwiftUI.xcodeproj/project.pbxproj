@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D0CC42E2B5017C000A45C4B /* KeyboardLayoutGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0CC42D2B5017BF00A45C4B /* KeyboardLayoutGuideView.swift */; };
 		6D3F87022B4E379B00A72EC1 /* BottomInputBarSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87012B4E379B00A72EC1 /* BottomInputBarSwiftUIApp.swift */; };
 		6D3F87062B4E379C00A72EC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3F87052B4E379C00A72EC1 /* Assets.xcassets */; };
 		6D3F87092B4E379C00A72EC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D3F87082B4E379C00A72EC1 /* Preview Assets.xcassets */; };
@@ -22,7 +21,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6D0CC42D2B5017BF00A45C4B /* KeyboardLayoutGuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardLayoutGuideView.swift; path = "../../../../../../Library/Mobile Documents/.Trash/KeyboardLayoutGuideView.swift"; sourceTree = "<group>"; };
 		6D3F86FE2B4E379B00A72EC1 /* BottomInputBarSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BottomInputBarSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3F87012B4E379B00A72EC1 /* BottomInputBarSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInputBarSwiftUIApp.swift; sourceTree = "<group>"; };
 		6D3F87052B4E379C00A72EC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				6D3F87172B4EEBC200A72EC1 /* UIButtonBar.swift */,
 				6D3F87192B4EEBF500A72EC1 /* UIBottomBar.Views.swift */,
 				6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */,
-				6D0CC42D2B5017BF00A45C4B /* KeyboardLayoutGuideView.swift */,
 			);
 			path = BottomBar;
 			sourceTree = "<group>";
@@ -198,7 +195,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D0CC42E2B5017C000A45C4B /* KeyboardLayoutGuideView.swift in Sources */,
 				6D3F87292B4EF80300A72EC1 /* TextField.swift in Sources */,
 				6DE5771C2B4F5BE700196A84 /* BottomBar.swift in Sources */,
 				6D3F871C2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift in Sources */,

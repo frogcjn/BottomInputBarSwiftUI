@@ -10,17 +10,12 @@ import UIKit
 extension UIBottomBar {
     struct Views {
         
-        let backdrop: UIView
         let hostingView: UIView
+        let backgroundView: UIView
+        let floatingView: UIView
         // let guideView: UIView
          
-        init(content: UIView) {
-             self.backdrop = {
-                 let backdrop = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-                 backdrop.translatesAutoresizingMaskIntoConstraints = false
-                 return backdrop
-             }()
-             
+        init(hostingView: UIView, superview: UIView) {
              /*self.guideView = {
                  let guideView = UIView()
                  guideView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,14 +25,24 @@ extension UIBottomBar {
                  return guideView
              }()*/
 
-             self.hostingView = {
-                 let hostingView = content
-                 hostingView.backgroundColor = .clear
-                 hostingView.translatesAutoresizingMaskIntoConstraints = false
-                 return hostingView
-             }()
+            hostingView.translatesAutoresizingMaskIntoConstraints = false
+            self.hostingView = hostingView
             
+            let backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+            backgroundView.translatesAutoresizingMaskIntoConstraints = false
+            self.backgroundView = backgroundView
+            
+            let floatingView = UIView()
+            floatingView.layer.borderColor = UIColor.green.cgColor
+            floatingView.layer.borderWidth = 1
+            floatingView.translatesAutoresizingMaskIntoConstraints = false
+            self.floatingView = floatingView
+ 
+            // superview
+            superview.translatesAutoresizingMaskIntoConstraints = false
+            superview.addSubview(floatingView)
+            floatingView.addSubview(backgroundView)
+            floatingView.addSubview(hostingView)
         }
-     
     }
 }

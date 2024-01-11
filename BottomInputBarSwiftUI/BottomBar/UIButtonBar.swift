@@ -13,30 +13,36 @@ class UIBottomBar : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(content: UIView) {
-        views = Views(content: content)
-        super.init(frame: .zero)
-        
-        //backgroundColor = .green
-        layer.borderColor = UIColor.green.cgColor
-        layer.borderWidth = 1
-        isUserInteractionEnabled = true
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        addSubview(views.backdrop)
-        // addSubview(views.guideView)
-        addSubview(views.hostingView)
+    // var backgroundView: UIView { self }
+    var views: Views!
+    
+    init(hostingView: UIView, frame: CGRect = .zero) {
+        super.init(frame: frame)
+        self.views = Views(hostingView: hostingView, superview: self)
+    }
+    
+    var keyboardConstraints: WindowConstrints? {
+        didSet {
+            oldValue?.uninstall()
+            keyboardConstraints?.install()
+        }
+    }
+    
+    var superViewConstraints: SuperViewConstraints? {
+        didSet {
+            oldValue?.uninstall()
+            superViewConstraints?.install()
+        }
     }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
-        superViewConstraints = SuperViewConstraints(source: views, target: self)
+        superViewConstraints = SuperViewConstraints(source: views,  target: views.floatingView)
     }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
-        keyboardConstraints = KeyboardConstraints(source: views, target: window?.rootViewController?.view)
+        keyboardConstraints = WindowConstrints(source: views, target: WindowConstrints.Target(window: window))
     }
     
     override func layoutSubviews() {
@@ -44,23 +50,8 @@ class UIBottomBar : UIView {
         keyboardConstraints?.updateKeyboardDismissPadding()
     }
     
-    // views, constraints
-    
-    let views: Views
-    subscript<T>(dynamicMember keyPath: KeyPath<Views, T>) -> T {
-        views[keyPath: keyPath]
-    }
-    
-    var keyboardConstraints: KeyboardConstraints? {
-        didSet {
-            oldValue?.uninstall()
-            keyboardConstraints?.install()
-        }
-    }
-    var superViewConstraints: SuperViewConstraints? {
-        didSet {
-            oldValue?.uninstall()
-            superViewConstraints?.install()
-        }
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        views.hostingView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
     }
 }
+

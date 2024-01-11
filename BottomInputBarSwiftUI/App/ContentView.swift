@@ -6,15 +6,13 @@
 //
 
 import SwiftUI
-import SwiftUIIntrospect
 
 struct ContentView: View {
-
     var body: some View {
         NavigationStack {
             MessageList()
+                .navigationTitle("Message List")
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
-
-
