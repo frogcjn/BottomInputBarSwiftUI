@@ -21,21 +21,41 @@ struct MessageList: View {
                 }
             }
             .onAppear {
-                proxy.scrollTo(data.last, anchor: .bottom)
+                proxy.scrollTo(data.last!, anchor: .bottom)
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.keyboardDidShowNotification)) { _ in
                 withAnimation {
-                    proxy.scrollTo(data.last, anchor: .bottom)
+                    proxy.scrollTo(data.last!, anchor: .bottom)
                 }
             }
         }
         .scrollDismissesKeyboard(.interactively)
-        .safeAreaInset(edge: .bottom) {
-            BottomBar {
-                TextField("123", text: .constant("123"))
-                    .textFieldStyle(.roundedBorder)
-                    .padding()
-            }
+        .bottomBar {
+            TextField("123", text: .constant("123"))
+                .textFieldStyle(.roundedBorder)
+                .padding()
         }
+    }
+}
+
+import SwiftUI
+
+struct SizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
+      let next = nextValue()
+      value.width += next.width
+      value.height += next.height
+  }
+}
+
+extension View {
+    func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+        background(
+            GeometryReader { geometryProxy in
+                Color.clear.preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+            }
+          )
+        .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
     }
 }

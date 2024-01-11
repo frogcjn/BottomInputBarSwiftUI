@@ -37,7 +37,7 @@ extension UIBottomBar {
         init?(source: UIBottomBar.Views, target: UIView? = nil) {
             guard let target else { return nil }
             
-            let hostingView = source.hostingView
+            let barView = source.barView
             let backgroundView = source.backgroundView
             
             let constraints = [
@@ -46,10 +46,10 @@ extension UIBottomBar {
                 backgroundView.leadingAnchor.constraint(equalTo: target.leadingAnchor),
                 backgroundView.trailingAnchor.constraint(equalTo:target.trailingAnchor),
                 
-                hostingView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
-                hostingView.bottomAnchor.constraint(lessThanOrEqualTo: backgroundView.bottomAnchor),
-                hostingView.leadingAnchor.constraint(greaterThanOrEqualTo: backgroundView.leadingAnchor),
-                hostingView.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor)
+                barView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+                barView.bottomAnchor.constraint(lessThanOrEqualTo: backgroundView.bottomAnchor),
+                barView.leadingAnchor.constraint(greaterThanOrEqualTo: backgroundView.leadingAnchor),
+                barView.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor)
             ]
             
             self.source = source
@@ -68,7 +68,7 @@ extension UIBottomBar {
         
         init?(source: UIBottomBar.Views, target: Target?) {
             
-            let hostingView = source.hostingView
+            let barView = source.barView
             let backgroundView = source.backgroundView
             
             guard let target else { return nil }
@@ -76,7 +76,7 @@ extension UIBottomBar {
             let keyboardLayoutGuide = target.keyboardLayoutGuide
             let safeAreaLayoutGuide = target.safeAreaLayoutGuide
             
-            hostingView.setContentCompressionResistancePriority(.required, for: .horizontal)
+            barView.setContentCompressionResistancePriority(.required, for: .horizontal)
             let constraints = [
                 // backgroundView == window (without top)
                 backgroundView.leadingAnchor.constraint(equalTo: window.leadingAnchor),
@@ -84,21 +84,21 @@ extension UIBottomBar {
                 backgroundView.bottomAnchor.constraint(equalTo: window.bottomAnchor),
                 
                 // hostingView | keyboard (V)
-                hostingView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor),
+                barView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor),
                 
                 // hostingView == keyboard (H)
-                hostingView.centerXAnchor.constraint(equalTo: keyboardLayoutGuide.centerXAnchor),
+                barView.centerXAnchor.constraint(equalTo: keyboardLayoutGuide.centerXAnchor),
                 {
-                    let constraint = hostingView.widthAnchor.constraint(equalTo: keyboardLayoutGuide.widthAnchor)
+                    let constraint = barView.widthAnchor.constraint(equalTo: keyboardLayoutGuide.widthAnchor)
                     constraint.priority -= 1
                     return constraint
                 }(),
                 
                 // hostingView <= safeArea
-                hostingView.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor),
-                hostingView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor),
-                hostingView.leadingAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor),
-                hostingView.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor)
+                barView.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor),
+                barView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor),
+                barView.leadingAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.leadingAnchor),
+                barView.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor)
             ]
             
             self.source = source
@@ -107,7 +107,7 @@ extension UIBottomBar {
         }
         
         func updateKeyboardDismissPadding() {
-            target.keyboardLayoutGuide.keyboardDismissPadding = source.hostingView.intrinsicContentSize.height
+            target.keyboardLayoutGuide.keyboardDismissPadding = source.barView.intrinsicContentSize.height
         }
         
         struct Target {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class UIBottomBar : UIView {
     
@@ -16,9 +17,9 @@ class UIBottomBar : UIView {
     // var backgroundView: UIView { self }
     var views: Views!
     
-    init(hostingView: UIView, frame: CGRect = .zero) {
+    init(barView: UIView, backgroundView: UIView, frame: CGRect = .zero) {
         super.init(frame: frame)
-        self.views = Views(hostingView: hostingView, superview: self)
+        self.views = Views(barView: barView, backgroundView: backgroundView, superview: self)
     }
     
     var keyboardConstraints: WindowConstrints? {
@@ -51,7 +52,44 @@ class UIBottomBar : UIView {
     }
     
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        views.hostingView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+        views.floatingView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
     }
+}
+
+extension UIBottomBar {
+    
+    struct ViewRepresentable<BottomBar: View, Background: View> : UIViewRepresentable {
+        @ViewBuilder
+        let bottomBar: BottomBar
+        
+        @ViewBuilder
+        let background :Background
+        
+        typealias UIViewType = UIBottomBar
+        
+        func makeUIView(context: Context) -> UIViewType {
+            UIBottomBar(
+                barView: _UIHostingView(rootView: bottomBar),
+                backgroundView: _UIHostingView(rootView: background)
+            )
+        }
+            
+        func updateUIView(_ uiView: UIViewType, context: Context) {
+            
+        }
+        
+        func sizeThatFits(_ proposal: ProposedViewSize, uiView: Self.UIViewType, context: Self.Context) -> CGSize? {
+            uiView.systemLayoutSizeFitting(
+                {
+                    var size = proposal.replacingUnspecifiedDimensions()
+                    size.height = UIView.layoutFittingCompressedSize.height
+                    return size
+                }(),
+                withHorizontalFittingPriority: .defaultHigh,
+                verticalFittingPriority: .fittingSizeLevel
+            )
+        }
+     }
+
 }
 

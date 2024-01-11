@@ -17,7 +17,7 @@
 		6D3F871C2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */; };
 		6D3F87242B4EF74600A72EC1 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87232B4EF74600A72EC1 /* MessageList.swift */; };
 		6D3F87292B4EF80300A72EC1 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3F87282B4EF80300A72EC1 /* TextField.swift */; };
-		6DE5771C2B4F5BE700196A84 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5771B2B4F5BE700196A84 /* BottomBar.swift */; };
+		6DE5771C2B4F5BE700196A84 /* BottomBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5771B2B4F5BE700196A84 /* BottomBarModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBottomBar.Constraints.swift; sourceTree = "<group>"; };
 		6D3F87232B4EF74600A72EC1 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		6D3F87282B4EF80300A72EC1 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		6DE5771B2B4F5BE700196A84 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		6DE5771B2B4F5BE700196A84 /* BottomBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 		6D3F87202B4EF59900A72EC1 /* BottomBar */ = {
 			isa = PBXGroup;
 			children = (
-				6DE5771B2B4F5BE700196A84 /* BottomBar.swift */,
+				6DE5771B2B4F5BE700196A84 /* BottomBarModifier.swift */,
 				6D3F87172B4EEBC200A72EC1 /* UIBottomBar.swift */,
 				6D3F87192B4EEBF500A72EC1 /* UIBottomBar.Views.swift */,
 				6D3F871B2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift */,
@@ -196,7 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D3F87292B4EF80300A72EC1 /* TextField.swift in Sources */,
-				6DE5771C2B4F5BE700196A84 /* BottomBar.swift in Sources */,
+				6DE5771C2B4F5BE700196A84 /* BottomBarModifier.swift in Sources */,
 				6D3F871C2B4EEC1E00A72EC1 /* UIBottomBar.Constraints.swift in Sources */,
 				6D3F87182B4EEBC200A72EC1 /* UIBottomBar.swift in Sources */,
 				6D3F87242B4EF74600A72EC1 /* MessageList.swift in Sources */,

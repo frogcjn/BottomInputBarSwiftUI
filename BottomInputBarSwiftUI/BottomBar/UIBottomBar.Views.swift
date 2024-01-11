@@ -10,30 +10,30 @@ import UIKit
 extension UIBottomBar {
     struct Views {
         
-        let hostingView: UIView
+        let barView: UIView
         let backgroundView: UIView
         let floatingView: UIView
          
-        init(hostingView: UIView, superview: UIView) {
+        init(barView: UIView, backgroundView: UIView, superview: UIView) {
 
-            hostingView.translatesAutoresizingMaskIntoConstraints = false
-            self.hostingView = hostingView
+            barView.translatesAutoresizingMaskIntoConstraints = false
+            self.barView = barView
             
-            let backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+            //let backgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
             backgroundView.translatesAutoresizingMaskIntoConstraints = false
             self.backgroundView = backgroundView
             
             let floatingView = UIView()
-            floatingView.layer.borderColor = UIColor.green.cgColor
-            floatingView.layer.borderWidth = 1
+            //floatingView.layer.borderColor = UIColor.green.cgColor
+            //floatingView.layer.borderWidth = 1
             floatingView.translatesAutoresizingMaskIntoConstraints = false
             self.floatingView = floatingView
  
             // superview
-            superview.translatesAutoresizingMaskIntoConstraints = false
+            //superview.translatesAutoresizingMaskIntoConstraints = false
             superview.addSubview(floatingView)
             floatingView.addSubview(backgroundView)
-            floatingView.addSubview(hostingView)
+            floatingView.addSubview(barView)
         }
     }
 }
