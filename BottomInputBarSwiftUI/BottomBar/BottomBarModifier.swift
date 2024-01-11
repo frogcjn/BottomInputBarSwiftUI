@@ -31,7 +31,7 @@ struct Modifier<BarContent : View>: ViewModifier {
                 barContent
             } background: {
                 Color.clear.background(Material.bar).readSize { height = $0.height }
-            }
+            }.border(.blue)
         }
     }
 }
