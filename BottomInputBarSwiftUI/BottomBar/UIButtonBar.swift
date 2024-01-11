@@ -24,7 +24,7 @@ class UIBottomBar : UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(views.backdrop)
-        addSubview(views.guideView)
+        // addSubview(views.guideView)
         addSubview(views.hostingView)
     }
     
@@ -32,7 +32,11 @@ class UIBottomBar : UIView {
         super.didMoveToSuperview()
         
         superViewConstraints = SuperViewConstraints(source: views, target: self)
-        keyboardConstraints = KeyboardConstraints(source: views, target: superview)
+    }
+    
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        keyboardConstraints = KeyboardConstraints(source: views, target: window?.rootViewController?.view)
     }
     
     override func layoutSubviews() {

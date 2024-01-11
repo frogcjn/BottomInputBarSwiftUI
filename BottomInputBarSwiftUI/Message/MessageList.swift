@@ -12,6 +12,8 @@ struct MessageList: View {
     var body: some View {
         ScrollViewReader { proxy in
             List {
+                TextField("123", text: .constant("123"))
+                    .textFieldStyle(.roundedBorder)
                 ForEach(Array(1..<20), id: \.self) {
                     Text("\($0)")
                 }
@@ -25,10 +27,12 @@ struct MessageList: View {
                 proxy.scrollTo(19, anchor: .bottom)
             }
             .scrollDismissesKeyboard(.interactively)
-            .bottomBar {
-                TextField("123", text: .constant("123"))
-                    .textFieldStyle(.roundedBorder)
-                    .padding()
+            .safeAreaInset(edge: .bottom) {
+                BottomBar {
+                    TextField("123", text: .constant("123"))
+                        .textFieldStyle(.roundedBorder)
+                        .padding()
+                }.border(.red.opacity(0.5))
             }
             .navigationTitle("Message List")
             .navigationBarTitleDisplayMode(.inline)

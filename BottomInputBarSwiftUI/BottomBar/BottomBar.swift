@@ -1,44 +1,49 @@
 //
-//  BottomBar.swift
+//  Wrapper.swift
 //  BottomInputBarSwiftUI
 //
 //  Created by Cao, Jiannan on 1/10/24.
 //
 
 import SwiftUI
-
-extension View {
-    func bottomBar<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        modifier(BottomBar.Modifier(barContent: content))
+    
+struct BottomBar<BottomBar: View> : UIViewRepresentable {
+    @ViewBuilder
+    let bottomBar: BottomBar
+    
+    typealias UIViewType = UIFloatingView
+    
+    func makeUIView(context: Context) -> UIViewType {
+        UIFloatingView(content: UIBottomBar(content: _UIHostingView(rootView: bottomBar)))
     }
-}
-
-struct BottomBar {
-    @Observable
-    class Publisher {
-        var height: CGFloat?
         
-        @ObservationIgnored
-        var uiBottomBar: UIBottomBar?
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
     }
     
-    struct Modifier<BarContent : View>: ViewModifier {
-        
-        @ViewBuilder
-        let barContent: BarContent
-        
-        @State
-        private var publisher = BottomBar.Publisher()
-        
-        func body(content: Content) -> some View {
-            content
-                .safeAreaPadding(.bottom, publisher.height)
-                .introspect(.viewController, on: .iOS(.v17)) {
-                    guard publisher.uiBottomBar == nil else { return }
-                    let uiBottomBar = UIBottomBar(content: _UIHostingView(rootView: barContent.readSize { publisher.height = $0.height }))
-                    $0.view.addSubview(uiBottomBar)
-                    publisher.uiBottomBar = uiBottomBar
-                }
-        }
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: Self.UIViewType, context: Self.Context) -> CGSize? {
+        return uiView.content.systemLayoutSizeFitting(
+            {
+                var size = proposal.replacingUnspecifiedDimensions()
+                size.height = UIView.layoutFittingCompressedSize.height
+                return size
+            }(),
+            withHorizontalFittingPriority: .defaultHigh,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+    }
+ }
+
+class UIFloatingView : UIView {
+    let content: UIView
+    
+    init(content: UIView, frame: CGRect = .zero) {
+        self.content = content
+        super.init(frame: frame)
+        addSubview(content)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

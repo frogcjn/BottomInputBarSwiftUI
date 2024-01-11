@@ -9,24 +9,26 @@ import UIKit
 
 extension UIBottomBar {
     struct Views {
-         let backdrop: UIView
-         let hostingView: UIView
-         let guideView: UIView
+        
+        let backdrop: UIView
+        let hostingView: UIView
+        // let guideView: UIView
          
-         init(content: UIView) {
+        init(content: UIView) {
              self.backdrop = {
                  let backdrop = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
                  backdrop.translatesAutoresizingMaskIntoConstraints = false
                  return backdrop
              }()
              
-             self.guideView = {
+             /*self.guideView = {
                  let guideView = UIView()
                  guideView.translatesAutoresizingMaskIntoConstraints = false
-                 guideView.layer.borderColor = UIColor.clear.cgColor
-                 guideView.layer.borderWidth = 1
+                 //guideView.layer.borderColor = UIColor.red.cgColor
+                 //guideView.layer.borderWidth = 1
+                 guideView.backgroundColor = .yellow
                  return guideView
-             }()
+             }()*/
 
              self.hostingView = {
                  let hostingView = content
@@ -34,7 +36,8 @@ extension UIBottomBar {
                  hostingView.translatesAutoresizingMaskIntoConstraints = false
                  return hostingView
              }()
-         }
-         
-     }
+            
+        }
+     
+    }
 }

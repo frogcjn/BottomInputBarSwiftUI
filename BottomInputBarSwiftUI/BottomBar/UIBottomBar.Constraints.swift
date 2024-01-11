@@ -64,10 +64,9 @@ struct KeyboardConstraints : Constraints {
         guard let target else { return nil }
         
         let hostingView = source.hostingView
-        let guideView   = source.guideView
+        // let guideView   = source.guideView
         let backdrop    = source.backdrop
         
-        target.keyboardLayoutGuide.usesBottomSafeArea = false
         let constraints = [
                 backdrop.leadingAnchor.constraint(equalTo: target.keyboardLayoutGuide.leadingAnchor),
                 backdrop.trailingAnchor.constraint(equalTo: target.keyboardLayoutGuide.trailingAnchor),
@@ -77,10 +76,10 @@ struct KeyboardConstraints : Constraints {
                 hostingView.trailingAnchor.constraint(lessThanOrEqualTo: target.safeAreaLayoutGuide.trailingAnchor),
                 hostingView.bottomAnchor.constraint(lessThanOrEqualTo: target.safeAreaLayoutGuide.bottomAnchor),
 
-                guideView.leadingAnchor.constraint(equalTo: target.keyboardLayoutGuide.leadingAnchor),
+                /*guideView.leadingAnchor.constraint(equalTo: target.keyboardLayoutGuide.leadingAnchor),
                 guideView.trailingAnchor.constraint(equalTo: target.keyboardLayoutGuide.trailingAnchor),
                 guideView.topAnchor.constraint(equalTo: target.keyboardLayoutGuide.topAnchor),
-                guideView.bottomAnchor.constraint(equalTo: target.keyboardLayoutGuide.bottomAnchor)
+                guideView.bottomAnchor.constraint(equalTo: target.keyboardLayoutGuide.bottomAnchor)*/
         ]
         
         self.source = source
@@ -89,6 +88,7 @@ struct KeyboardConstraints : Constraints {
     }
     
     func install() {
+        target.keyboardLayoutGuide.usesBottomSafeArea = false
         NSLayoutConstraint.activate(constraints)
     }
     

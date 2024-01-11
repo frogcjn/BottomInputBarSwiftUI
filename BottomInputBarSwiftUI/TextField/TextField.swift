@@ -21,6 +21,8 @@ struct TextField : View {
     
     var body : some View {
         SwiftUI.TextField(title, text: $text)
-            .introspect(.textField, on: .iOS(.v17)) { $0.inputAccessoryView = nil }
+            .introspect(.textField, on: .iOS(.v17)) {
+                $0.inputAccessoryView = nil // fix a bug that input accessory view acts as a gap
+            }
     }
 }
