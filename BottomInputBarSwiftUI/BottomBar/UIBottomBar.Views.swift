@@ -13,17 +13,8 @@ extension UIBottomBar {
         let hostingView: UIView
         let backgroundView: UIView
         let floatingView: UIView
-        // let guideView: UIView
          
         init(hostingView: UIView, superview: UIView) {
-             /*self.guideView = {
-                 let guideView = UIView()
-                 guideView.translatesAutoresizingMaskIntoConstraints = false
-                 //guideView.layer.borderColor = UIColor.red.cgColor
-                 //guideView.layer.borderWidth = 1
-                 guideView.backgroundColor = .yellow
-                 return guideView
-             }()*/
 
             hostingView.translatesAutoresizingMaskIntoConstraints = false
             self.hostingView = hostingView
